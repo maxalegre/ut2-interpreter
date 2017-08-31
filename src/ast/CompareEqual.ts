@@ -23,6 +23,9 @@ export class CompareEqual implements Exp {
   }
 
   evaluate(state: State): any {
-    return undefined;
+    var lhsEval = this.lhs.evaluate(state);
+    var rhsEval = this.rhs.evaluate(state);
+
+    return lhsEval == rhsEval;
   }
 }

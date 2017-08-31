@@ -2,7 +2,7 @@ import { Exp } from './ASTNode';
 import { State } from '../interpreter/State';
 
 /**
-  Representación de conjunciones booleanas (AND).
+  Representación de disjunciones booleanas (OR).
 */
 export class Disjunction implements Exp {
 
@@ -23,6 +23,13 @@ export class Disjunction implements Exp {
   }
 
   evaluate(state: State): any {
-    return undefined;
+    var lhsEval = this.lhs.evaluate(state);
+    var rhsEval = this.rhs.evaluate(state);
+
+    if (typeof lhsEval === 'boolean' && typeof rhsEval === 'boolean') {
+      return lhsEval || rhsEval;
+    }
+    
+    throw new Error('Operandos deben ser de tipo numérico.');
   }
 }

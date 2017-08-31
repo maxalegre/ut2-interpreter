@@ -21,6 +21,12 @@ export class Negation implements Exp {
   }
 
   evaluate(state: State): any {
-    return undefined;
+    var expEval = this.exp.evaluate(state);
+
+    if (typeof expEval === 'boolean') {
+      return !expEval;
+    }
+
+    return 'Operando debe ser booleano.';
   }
 }

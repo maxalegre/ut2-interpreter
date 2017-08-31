@@ -23,6 +23,13 @@ export class Addition implements Exp {
   }
 
   evaluate(state: State): any {
-    return undefined;
+    var lhsEval = this.lhs.evaluate(state);
+    var rhsEval = this.rhs.evaluate(state);
+
+    if (typeof lhsEval === 'number' && typeof rhsEval === 'number') {
+      return lhsEval + rhsEval;
+    }
+    
+    return 'Operandos deben ser de tipo numérico.';
   }
 }

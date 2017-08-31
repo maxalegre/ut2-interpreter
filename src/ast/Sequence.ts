@@ -29,6 +29,7 @@ export class Sequence implements Stmt {
   }
 
   evaluate(state: State): State {
+    // state.set();
     return undefined;
   }
 }
