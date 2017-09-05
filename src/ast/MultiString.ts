@@ -3,10 +3,9 @@ import { Exp } from './ASTNode';
 import { State } from '../interpreter/State';
 
 /**
-  Representación de multiplicaciones.
+  Representación de multiplicación de string y número.
 */
 export class MultiString implements Exp {
-
   lhs: Exp;
   rhs: Exp;
 
@@ -20,7 +19,7 @@ export class MultiString implements Exp {
   }
 
   unparse(): string {
-    return `(${this.lhs.unparse()} * ${this.rhs.unparse()})`;
+    return `( ${this.lhs.unparse()} * ${this.rhs.unparse()} )`;
   }
 
   evaluate(state: State): any {
@@ -29,10 +28,10 @@ export class MultiString implements Exp {
 
     if (typeof lhsEval === 'number' && typeof rhsEval === 'string') {
       return rhsEval.repeat(lhsEval);
-    }
-    else if (typeof lhsEval === 'string' && typeof rhsEval === 'number') {
+    } else if (typeof lhsEval === 'string' && typeof rhsEval === 'number') {
       return lhsEval.repeat(rhsEval);
     }
-    return "Los tipos ingresados no son compatibles "
+
+    throw new Error("Los tipos ingresados no son compatibles");
   }
 }

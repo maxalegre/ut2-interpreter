@@ -2,10 +2,9 @@ import { Exp } from './ASTNode';
 import { State } from '../interpreter/State';
 
 /**
-  Representación de sumas.
+  Representación de concatenación de strings.
 */
 export class Concatenation implements Exp {
-
   lhs: Exp;
   rhs: Exp;
 
@@ -26,10 +25,10 @@ export class Concatenation implements Exp {
     var lhsEval = this.lhs.evaluate(state);
     var rhsEval = this.rhs.evaluate(state);
 
-    if (typeof lhsEval === 'String' && typeof rhsEval === 'String') {
+    if (typeof lhsEval === 'string' && typeof rhsEval === 'string') {
       return lhsEval + rhsEval;
     }
     
-    return 'Operandos deben ser de tipo string.';
+    throw new Error("Operandos deben ser de tipo string.");
   }
 }

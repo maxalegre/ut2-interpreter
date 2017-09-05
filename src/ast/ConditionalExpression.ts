@@ -2,7 +2,7 @@ import { Exp, Stmt } from './ASTNode';
 import { State } from '../interpreter/State';
 
 /**
-  Representación de las sentencias condicionales.
+  Representación de las expresiones condicionales.
 */
 export class ConditionalExpression implements Exp {
   cond: Exp;
@@ -16,12 +16,10 @@ export class ConditionalExpression implements Exp {
   }
 
   toString(): string {
-    //return `IfThenElse(${this.cond.toString()}, ${this.thenBody.toString()}, ${this.elseBody.toString()})`;
     return `ConditionalExpression(${this.thenBody.toString()},${this.cond.toString()},${this.elseBody.toString()})`;
   }
 
   unparse(): string {
-    //return `if ${this.cond.unparse()} then { ${this.thenBody.unparse()} } else { ${this.elseBody.unparse()} }`;
     return `${this.thenBody.unparse()} if ${this.cond.unparse()} else ${this.elseBody.unparse()}`;
   }
 
