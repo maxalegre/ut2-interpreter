@@ -15,7 +15,7 @@ export class Concatenation implements Exp {
   }
 
   toString(): string {
-    return `Addition(${this.lhs.toString()}, ${this.rhs.toString()})`;
+    return `Concatenation(${this.lhs.toString()}, ${this.rhs.toString()})`;
   }
 
   unparse(): string {
