@@ -2,9 +2,9 @@ import { Exp } from './ASTNode';
 import { State } from '../interpreter/State';
 
 /**
-  Representación de las comparaciones por igual.
+  Representación de sumas.
 */
-export class CompareNotEqual implements Exp {
+export class Concatenation implements Exp {
 
   lhs: Exp;
   rhs: Exp;
@@ -15,17 +15,21 @@ export class CompareNotEqual implements Exp {
   }
 
   toString(): string {
-    return `CompareNotEqual(${this.lhs.toString()}, ${this.rhs.toString()})`;
+    return `Addition(${this.lhs.toString()}, ${this.rhs.toString()})`;
   }
 
   unparse(): string {
-    return `(${this.lhs.unparse()} != ${this.rhs.unparse()})`;
+    return `(${this.lhs.unparse()} + ${this.rhs.unparse()})`;
   }
 
   evaluate(state: State): any {
     var lhsEval = this.lhs.evaluate(state);
     var rhsEval = this.rhs.evaluate(state);
 
-    return lhsEval != rhsEval;
+    if (typeof lhsEval === 'String' && typeof rhsEval === 'String') {
+      return lhsEval + rhsEval;
+    }
+    
+    return 'Operandos deben ser de tipo string.';
   }
 }
