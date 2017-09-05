@@ -29,7 +29,15 @@ export class Sequence implements Stmt {
   }
 
   evaluate(state: State): State {
-    // state.set();
-    return undefined;
+    this.statements.forEach(function (s: Stmt) {
+      state = s.evaluate(state);
+    });
+
+    // foreach(Stmt s in statements)
+    // {
+    //   state = s.evaluate(state);
+    // }
+
+    return state;
   }
 }

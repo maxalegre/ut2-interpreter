@@ -23,6 +23,7 @@ export * from './CompareLessOrEqual';
 export * from './CompareLess';
 export * from './CompareGreatOrEqual';
 export * from './CompareGreat';
+export * from './ConditionalExpression';
 export * from './Conjunction';
 export * from './Disjunction';
 export * from './Negation';
