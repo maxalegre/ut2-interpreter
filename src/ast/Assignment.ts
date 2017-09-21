@@ -23,7 +23,7 @@ export class Assignment implements Stmt {
   }
 
   evaluate(state: State): State {
-    state.set(this.id, this.exp.evaluate(state));
+    state.set(this.id, this.exp[0].evaluate(state));
     return state;
   }
 }

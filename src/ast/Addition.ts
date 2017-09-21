@@ -25,11 +25,13 @@ export class Addition implements Exp {
   evaluate(state: State): any {
     var lhsEval = this.lhs.evaluate(state);
     var rhsEval = this.rhs.evaluate(state);
+    console.log(typeof lhsEval)
+    console.log(typeof lhsEval)
 
     if (typeof lhsEval === 'number' && typeof rhsEval === 'number') {
       return lhsEval + rhsEval;
     }
     
-    return 'Operandos deben ser de tipo numérico.';
+    console.log ('Operandos deben ser de tipo numérico.');
   }
 }
