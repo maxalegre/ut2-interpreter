@@ -9,6 +9,8 @@ export * from './Sequence';
 export * from './WhileDo';
 export * from './DoWhile';
 export * from './WhileDoElse';
+export * from './Where';
+
 
 // AExp
 export * from './Addition';

@@ -23,7 +23,8 @@ import {
   Substraction,
   TruthValue,
   Variable,
-  WhileDo
+  WhileDo,
+  Where
 } from '../ast/AST';
 
 import { tokens } from './Tokens';
@@ -54,7 +55,10 @@ stmtelse ->
 exp ->
     exp "&&" comp           {% ([lhs, , rhs]) => (new Conjunction(lhs, rhs)) %}
   | exp "||" comp           {% ([lhs, , rhs]) => (new Disjunction(lhs, rhs)) %}
+  | exp "where" stmtelse  {% ([exp, ,stmtelse]) => (new Where(exp, stmtelse)) %}
   | comp                    {% id %}
+
+
 
 comp ->
     comp "==" addsub        {% ([lhs, , rhs]) => (new CompareEqual(lhs, rhs)) %}

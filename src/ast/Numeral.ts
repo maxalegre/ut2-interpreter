@@ -21,6 +21,11 @@ export class Numeral implements Exp {
   }
 
   evaluate(state: State): any {
+    console.log('LO GURISE')
+    console.log (typeof this.value);
+    console.log (this.value);
+  
+    
     return this.value;
   }
 }

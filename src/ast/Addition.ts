@@ -26,7 +26,7 @@ export class Addition implements Exp {
     var lhsEval = this.lhs.evaluate(state);
     var rhsEval = this.rhs.evaluate(state);
     console.log(typeof lhsEval)
-    console.log(typeof lhsEval)
+    console.log(typeof rhsEval)
 
     if (typeof lhsEval === 'number' && typeof rhsEval === 'number') {
       return lhsEval + rhsEval;

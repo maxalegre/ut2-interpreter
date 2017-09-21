@@ -11,7 +11,7 @@ export class Assignment implements Stmt {
 
   constructor(id: string, exp: Exp) {
     this.id = id;
-    this.exp = exp;
+    this.exp = exp[0] ? exp[0] : exp;
   }
 
   toString(): string {
@@ -23,7 +23,8 @@ export class Assignment implements Stmt {
   }
 
   evaluate(state: State): State {
-    state.set(this.id, this.exp[0].evaluate(state));
+    console.log(this.exp);
+    state.set(this.id, this.exp.evaluate(state));
     return state;
   }
 }
